@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rockgate Capital</title>
+  <meta name="description" content="Rockgate Capital website coming soon." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --text: #f5f7fb;
+      --muted: #b8c1d1;
+      --line: rgba(255,255,255,0.12);
+      --accent: #d4af37;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(212,175,55,0.16), transparent 30%),
+        linear-gradient(180deg, #0b1220 0%, #111827 100%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 48px 32px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .logo {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--accent);
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 auto;
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">Rockgate Capital</div>
+    <h1>Website under construction</h1>
+    <p>
+      We are currently building the Rockgate Capital website and will be live soon.
+      For enquiries, please contact us by email.
+    </p>
+    <div class="footer">
+      Contact: <a href="mailto:info@rockgatecapital.co.uk">info@rockgatecapital.co.uk</a>
+    </div>
+  </main>
+</body>
+</html>
