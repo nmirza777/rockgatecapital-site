@@ -1450,6 +1450,66 @@ section.content-section {
   }
 }
 
+.holding {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: var(--ink);
+}
+
+.holding__card {
+  max-width: 440px;
+  text-align: center;
+}
+
+.holding__mark {
+  width: 44px;
+  height: 47px;
+  margin: 0 auto 24px;
+}
+
+.holding__company {
+  margin: 0 0 6px;
+  color: var(--bronze-light);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.holding__title {
+  margin: 0 0 16px;
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 36px);
+  line-height: 1.15;
+}
+
+.holding__copy {
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.holding__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.holding__contact a {
+  color: var(--white);
+}
+
+.holding__contact a:hover {
+  color: var(--bronze-light);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
