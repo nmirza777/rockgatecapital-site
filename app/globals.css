@@ -216,35 +216,53 @@ button {
 
 .menu-toggle {
   display: none;
+  position: relative;
   width: 46px;
   height: 46px;
   border: 1px solid var(--line);
   background: var(--white);
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 5px;
   cursor: pointer;
 }
 
-.menu-toggle span {
+.menu-toggle__bars {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle__bars span {
   width: 21px;
   height: 2px;
   border-radius: 999px;
   background: var(--ink);
-  transition: transform 0.22s ease, opacity 0.22s ease;
+  transition: transform 0.28s ease, opacity 0.2s ease;
 }
 
-.menu-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+.menu-toggle__mark {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 19px;
   opacity: 0;
+  transform: scale(0.6);
+  transition: transform 0.3s ease, opacity 0.24s ease;
 }
 
-.menu-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.menu-toggle[aria-expanded="true"] .menu-toggle__bars span {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__mark {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .button {
@@ -928,12 +946,54 @@ section.content-section {
   font-weight: 400;
 }
 
-.calendly-inline-widget {
+.calendly-inline-widget,
+.calendly-widget-embed {
   width: 100%;
 }
 
-.calendly-inline-widget iframe {
+.calendly-inline-widget iframe,
+.calendly-widget-embed iframe {
   display: block;
+}
+
+.risk-warning-banner {
+  margin: 0 0 24px;
+  max-width: 560px;
+  padding: 14px 18px;
+  border: 1px solid var(--bronze);
+  border-radius: 4px;
+  background: #f0e8dc;
+  color: #5e4527;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.calendly-gate {
+  max-width: 480px;
+  padding: 28px;
+  border: 1px solid var(--stone-200);
+  border-radius: 8px;
+  background: var(--stone);
+}
+
+.calendly-gate__caveat {
+  margin: 0 0 20px;
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.calendly-gate__tob-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.calendly-gate__tob-note a {
+  color: var(--bronze);
+  text-decoration: underline;
 }
 
 .privacy-note {
@@ -1006,6 +1066,19 @@ section.content-section {
 
 .footer-col a:hover {
   color: var(--white);
+}
+
+.footer-risk-warning {
+  margin-top: 22px;
+  max-width: 380px;
+  padding: 14px 18px;
+  border: 1px solid var(--bronze-light);
+  border-radius: 4px;
+  background: rgba(199, 154, 92, 0.08);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .regulatory {
@@ -1423,6 +1496,35 @@ section.content-section {
   width: 100%;
 }
 
+.lead-assistant__caveat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.lead-assistant__caveat p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--body);
+  line-height: 1.6;
+}
+
+.lead-assistant__caveat .button {
+  width: 100%;
+}
+
+.lead-assistant__caveat-back {
+  align-self: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.lead-assistant__caveat-back:hover {
+  color: var(--ink);
+}
+
 .lead-assistant__privacy-note {
   margin: 0;
   font-size: 12px;
@@ -1448,66 +1550,6 @@ section.content-section {
     min-width: unset;
     height: 60vh;
   }
-}
-
-.holding {
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-  background: var(--ink);
-}
-
-.holding__card {
-  max-width: 440px;
-  text-align: center;
-}
-
-.holding__mark {
-  width: 44px;
-  height: 47px;
-  margin: 0 auto 24px;
-}
-
-.holding__company {
-  margin: 0 0 6px;
-  color: var(--bronze-light);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.holding__title {
-  margin: 0 0 16px;
-  color: var(--white);
-  font-family: var(--serif);
-  font-size: clamp(28px, 5vw, 36px);
-  line-height: 1.15;
-}
-
-.holding__copy {
-  margin: 0 0 28px;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.holding__contact {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.holding__contact a {
-  color: var(--white);
-}
-
-.holding__contact a:hover {
-  color: var(--bronze-light);
 }
 
 @media (prefers-reduced-motion: reduce) {

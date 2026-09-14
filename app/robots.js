@@ -4,7 +4,8 @@ export default function robots() {
   return {
     rules: {
       userAgent: "*",
-      disallow: "/",
+      allow: "/",
     },
+    sitemap: "https://rockgatecapital.co.uk/sitemap.xml",
   };
 }

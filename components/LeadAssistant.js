@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { siteConfig } from "@/lib/siteConfig";
+import { siteConfig, getExternalLinkCaveat } from "@/lib/siteConfig";
 import { basePath } from "@/lib/basePath";
 
 const SERVICE_OPTIONS = [
@@ -17,7 +17,7 @@ const TEASER_DISMISSED_KEY = "rg-assistant-teaser-dismissed";
 export default function LeadAssistant() {
   const [open, setOpen] = useState(false);
   const [showTeaser, setShowTeaser] = useState(false);
-  const [stage, setStage] = useState("form"); // "form" | "booking"
+  const [stage, setStage] = useState("form"); // "form" | "caveat" | "booking"
   const [form, setForm] = useState({ name: "", contact: "", service: SERVICE_OPTIONS[0] });
   const bookingRef = useRef(null);
 
@@ -54,7 +54,7 @@ export default function LeadAssistant() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!form.name.trim() || !form.contact.trim()) return;
-    setStage("booking");
+    setStage("caveat");
   }
 
   useEffect(() => {
@@ -119,7 +119,11 @@ export default function LeadAssistant() {
       {open && (
         <div className="lead-assistant__panel" role="dialog" aria-label="Book a call">
           <div className="lead-assistant__header">
-            <span>{stage === "form" ? "Let's find you a time" : `Great, ${form.name.split(" ")[0]} — pick a slot`}</span>
+            <span>
+              {stage === "form" && "Let's find you a time"}
+              {stage === "caveat" && "Before we continue"}
+              {stage === "booking" && `Great, ${form.name.split(" ")[0]} — pick a slot`}
+            </span>
             <button
               type="button"
               className="lead-assistant__close"
@@ -172,9 +176,32 @@ export default function LeadAssistant() {
               </button>
               <p className="lead-assistant__privacy-note">
                 We&apos;ll only use these details to arrange your call. Read our{" "}
-                <a href={`${basePath}/privacy`}>Privacy Policy</a>.
+                <a href={`${basePath}/privacy`}>Privacy Policy</a>. Before proceeding, please also
+                read our{" "}
+                <a href={`${basePath}/terms-of-business`}>Terms of Business</a>, which sets out
+                our services and fees.
               </p>
             </form>
+          )}
+
+          {stage === "caveat" && (
+            <div className="lead-assistant__caveat">
+              <p>{getExternalLinkCaveat()}</p>
+              <button
+                type="button"
+                className="button button--accent"
+                onClick={() => setStage("booking")}
+              >
+                Continue to Calendly
+              </button>
+              <button
+                type="button"
+                className="lead-assistant__caveat-back"
+                onClick={() => setStage("form")}
+              >
+                ← Back
+              </button>
+            </div>
           )}
 
           {stage === "booking" && <div className="lead-assistant__booking" ref={bookingRef} />}

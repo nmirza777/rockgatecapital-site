@@ -86,7 +86,7 @@ export default function Header() {
             <BrandMark className="brand__mark" fill="#0F241F" />
             <span className="brand__name">
               <span className="brand__rockgate">Rockgate</span>
-              <span className="brand__capital">Capital</span>
+              <span className="brand__capital">Capital Ltd</span>
             </span>
           </a>
 
@@ -99,9 +99,12 @@ export default function Header() {
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            <span className="menu-toggle__bars">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <BrandMark className="menu-toggle__mark" fill="#0F241F" />
           </button>
 
           <nav
